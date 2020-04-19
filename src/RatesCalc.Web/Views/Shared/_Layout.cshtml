@@ -29,12 +29,27 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-area="" asp-controller="Customer" asp-action="Index">
+                                <span data-feather="file"></span>
+                                Customers
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - RatesCalc.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
