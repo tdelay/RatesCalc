@@ -21,11 +21,13 @@ namespace RatesCalc.Infrastructure.Data
             _dispatcher = dispatcher;
         }
 
-        public DbSet<Customer> ToDoItems { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Agreement> Agreements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
         }
 
         public async Task<int> SaveChangesAsync()

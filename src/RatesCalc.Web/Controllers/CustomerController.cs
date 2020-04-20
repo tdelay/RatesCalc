@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RatesCalc.Core.Data;
 using RatesCalc.SharedBase.Interfaces;
+using RatesCalc.Web.Models;
 
 namespace RatesCalc.Web.Controllers
 {
@@ -17,11 +19,22 @@ namespace RatesCalc.Web.Controllers
         {
             _logger = logger;
             _repository = repository;
+            try
+            {
+                DbSeeder.SeedDBCustomers(_repository);
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e.Message);
+            }
         }
 
         public IActionResult Index()
         {
-            return View();
+            var items = _repository.List<Customer>()
+                           .Select(CustomerDTO.FromCustomer);
+            return View(items);
+
         }
     }
 }
