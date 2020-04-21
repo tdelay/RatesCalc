@@ -14,8 +14,6 @@ namespace RatesCalc.Core.Data
         public string Name { get; set; }
         public bool HasAgreement { get; set; } = false;
 
-        public ICollection<Agreement> Agreements { get; set; }
-
         public void SignAgreement()
         {
             HasAgreement = true;

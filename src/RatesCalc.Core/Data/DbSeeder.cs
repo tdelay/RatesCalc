@@ -28,7 +28,7 @@ namespace RatesCalc.Core.Data
 
             repository.Add(new Agreement
             {
-                CustomerPersonalId = 12345678,
+                CustomerId = 12345678,
                 Amount = 12000,
                 BaseRateCode = "VILIBOR3m",
                 Margin = 1.6,
@@ -38,7 +38,7 @@ namespace RatesCalc.Core.Data
 
             repository.Add(new Agreement
             {
-                CustomerPersonalId = 78706196287,
+                CustomerId = 78706196287,
                 Amount = 8000,
                 BaseRateCode = "VILIBOR1y",
                 Margin = 2.2,
@@ -48,7 +48,7 @@ namespace RatesCalc.Core.Data
 
             repository.Add(new Agreement
             {
-                CustomerPersonalId = 78706196287,
+                CustomerId = 78706196287,
                 Amount = 1000,
                 BaseRateCode = "VILIBOR6m",
                 Margin = 1.85,

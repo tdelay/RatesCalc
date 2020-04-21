@@ -29,11 +29,42 @@ namespace RatesCalc.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Customers
+        /// </summary>
+        /// <returns>List of Customers</returns>
         public IActionResult Index()
         {
             var items = _repository.List<Customer>()
                            .Select(CustomerDTO.FromCustomer);
             return View(items);
+
+        }
+
+        /// <summary>
+        /// Customer Details
+        /// </summary>
+        /// <param name="id">Customer Id</param>
+        /// <returns>Customer instance with added Agreements List</returns>
+        public IActionResult Details(int id)
+        {
+            var customer = new CustomerDTO();
+            try
+            {
+                _logger.LogInformation("Trying to get Customers instance with Agreements list");
+                customer = CustomerDTO.FromCustomer(_repository.GetById<Customer>(id));
+                customer.Agreements = _repository.List<Agreement>()
+                                        .Where(a => a.CustomerId == customer.PersonalId)
+                                        .Select(AgreementDTO.FromAgreement)
+                                        .ToList();
+
+                return View(customer);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return View(customer);
+            }
 
         }
     }

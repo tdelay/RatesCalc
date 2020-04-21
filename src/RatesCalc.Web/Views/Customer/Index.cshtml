@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Clients</h1>
+<h1>Customers</h1>
 
 <div class="my-3 p-3 bg-white rounded shadow-sm">
     @foreach (var item in Model)
@@ -13,7 +13,7 @@
             <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <strong class="text-gray-dark">@item.Name</strong>
-                    <a href="#">More Info</a>
+                    <a asp-area="" asp-controller="Customer" asp-action="Details"  asp-route-id="@item.Id">More Info</a>
                 </div>
                 <span class="d-block">Id: @item.PersonalId</span>
             </div>

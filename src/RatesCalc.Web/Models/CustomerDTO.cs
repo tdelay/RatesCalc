@@ -11,14 +11,13 @@ namespace RatesCalc.Web.Models
         public int Id { get; set; }
         public long PersonalId { get; set; }
         public string Name { get; set; }
-
-        public List<AgreementDTO> agreements = new List<AgreementDTO>();
-        // TODO: use Automapper
+        public ICollection<AgreementDTO> Agreements { get; set; }
+        // TODO: use AutoMappper 
         public static CustomerDTO FromCustomer(Customer customer) => new CustomerDTO
         {
             Id = customer.Id,
             PersonalId = customer.PersonalId,
-            Name = customer.Name
+            Name = customer.Name,
         };
 
     }

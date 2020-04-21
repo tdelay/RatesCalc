@@ -1,0 +1,63 @@
+﻿@model RatesCalc.Web.Models.CustomerDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h4>Customer</h4>
+        <form asp-action="Details">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PersonalId" class="control-label"></label>
+                <input asp-for="PersonalId" class="form-control" />
+                <span asp-validation-for="PersonalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <h4>Agreements</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Base rate code</th>
+                        <th>Margin</th>
+                        <th>Agreement duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Agreements)
+                    {
+                        <tr>
+                            <td>@item.Amount</td>
+                            <td>@item.BaseRateCode</td>
+                            <td>@item.Margin</td>
+                            <td>@item.AgreementDuration</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
