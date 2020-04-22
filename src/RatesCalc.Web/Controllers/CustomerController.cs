@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RatesCalc.Core.Data;
+using RatesCalc.Core.Helpers;
 using RatesCalc.SharedBase.Interfaces;
 using RatesCalc.Web.Models;
 
@@ -15,10 +16,18 @@ namespace RatesCalc.Web.Controllers
         private readonly ILogger<CustomerController> _logger;
         private readonly IRepository _repository;
 
-        public CustomerController(ILogger<CustomerController> logger, IRepository repository)
+        public CustomerController(IRepository repository, ILogger<CustomerController> logger)
         {
             _logger = logger;
             _repository = repository;
+            this.SeedData();
+        }
+
+        /// <summary>
+        /// Seed Data Base with mock data
+        /// </summary>
+        private void SeedData()
+        {
             try
             {
                 DbSeeder.SeedDBCustomers(_repository);
@@ -26,6 +35,7 @@ namespace RatesCalc.Web.Controllers
             catch (Exception e)
             {
                 _logger.LogInformation(e.Message);
+                throw e;
             }
         }
 

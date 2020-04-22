@@ -26,5 +26,15 @@ namespace RatesCalc.FunctionalTests.Controllers
 
             Assert.Contains("RatesCalc.Web", stringResponse);
         }
+
+        [Fact]
+        public async Task ReturnsViewWCustomerById()
+        {
+            var cutomerId = 1;
+            HttpResponseMessage response = await _client.GetAsync("/Customer/Details/" + cutomerId);
+            response.EnsureSuccessStatusCode();
+            string stringResponse = await response.Content.ReadAsStringAsync();
+            Assert.Contains("RatesCalc.Web", stringResponse);
+        }
     }
 }

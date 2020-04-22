@@ -11,6 +11,7 @@ namespace RatesCalc.Infrastructure.DomainEvents
     {
         public Task Dispatch(BaseDomainEvent domainEvent)
         {
+            // Do nothing
             return Task.CompletedTask;
         }
     }
