@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RatesCalc.Core.Data;
+using RatesCalc.Core.Factories;
 using RatesCalc.Core.Helpers;
 using RatesCalc.SharedBase.Interfaces;
 using RatesCalc.Web.Models;
@@ -45,6 +46,8 @@ namespace RatesCalc.Web.Controllers
         /// <returns>List of Customers</returns>
         public IActionResult Index()
         {
+            
+            // var rates = await BaseRateValueApiFactory.Instance.GetRates("VILIBOR3m");
             var items = _repository.List<Customer>()
                            .Select(CustomerDTO.FromCustomer);
             return View(items);
