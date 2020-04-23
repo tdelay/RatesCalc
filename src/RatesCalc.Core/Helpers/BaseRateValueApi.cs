@@ -39,16 +39,26 @@ namespace RatesCalc.Core.Helpers
             return await response.Content.ReadAsStringAsync();
         }
 
-        public XmlElement ParseXmlData(string body)
+        public XmlNode ParseXmlData(string body)
         {
             XmlDocument doc = new XmlDocument();
+
             doc.LoadXml(body);
-            return doc.DocumentElement;
+            XmlNodeList elemList = doc.GetElementsByTagName("decimal");
+            if (elemList.Count > 0)
+            {
+                return elemList.Item(0);
+            }
+            else
+            {
+                throw new MissingFieldException("No data containing Base rate values was returned from API");
+            }
+
         }
 
-        public T ParseDataByType<T>(XmlElement element)
+        public T ParseDataByType<T>(XmlNode element)
         {
-            return (T)Convert.ChangeType(element.InnerText, typeof(T));
+            return (T)Convert.ChangeType(element.InnerXml, typeof(T));
         }
 
         private Uri CreateRequestUri(string queryString = "")

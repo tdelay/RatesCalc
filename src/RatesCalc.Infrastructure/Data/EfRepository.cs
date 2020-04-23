@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace RatesCalc.Infrastructure.Data
 {
@@ -26,6 +27,11 @@ namespace RatesCalc.Infrastructure.Data
         public List<T> List<T>() where T : BaseEntity
         {
             return _dbContext.Set<T>().ToList();
+        }
+        
+        public async Task<List<T>> ListAsync<T>() where T : BaseEntity
+        {
+            return await _dbContext.Set<T>().ToListAsync();
         }
 
         public T Add<T>(T entity) where T : BaseEntity

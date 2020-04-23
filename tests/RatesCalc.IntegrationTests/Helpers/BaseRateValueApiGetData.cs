@@ -27,7 +27,7 @@ namespace RatesCalc.IntegrationTests.Helpers
         [Fact]
         public async void GetXmlElementFromResponseAndParseData()
         {
-            var uri = new Uri("http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx/getLatestVilibRate?RateType=VILIBOR3m");
+            var uri = new Uri("http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx/getLatestVilibRate?RateType=VILIBOR3m566");
             var responseBOdy = await BaseRateValueApiFactory.Instance.GetAsync(uri);
             var xmlElement = BaseRateValueApiFactory.Instance.ParseXmlData(responseBOdy);
             var rateValue = BaseRateValueApiFactory.Instance.ParseDataByType<double>(xmlElement);

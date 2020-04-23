@@ -1,4 +1,5 @@
-﻿using RatesCalc.SharedBase.Interfaces;
+﻿using RatesCalc.Core.Enums;
+using RatesCalc.SharedBase.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace RatesCalc.Core.Data
             {
                 CustomerId = 12345678,
                 Amount = 12000,
-                BaseRateCode = "VILIBOR3m",
+                BaseRateCode = BaseRateCodeEnum.VILIBOR3m,
                 Margin = 1.6,
                 AgreementDuration = 60,
                 AgreementShortDescription = "Family Loan Agreement"
@@ -40,7 +41,7 @@ namespace RatesCalc.Core.Data
             {
                 CustomerId = 78706196287,
                 Amount = 8000,
-                BaseRateCode = "VILIBOR1y",
+                BaseRateCode = BaseRateCodeEnum.VILIBOR1y,
                 Margin = 2.2,
                 AgreementDuration = 36,
                 AgreementShortDescription = "Personal Loan Agreement"
@@ -50,7 +51,7 @@ namespace RatesCalc.Core.Data
             {
                 CustomerId = 78706196287,
                 Amount = 1000,
-                BaseRateCode = "VILIBOR6m",
+                BaseRateCode = BaseRateCodeEnum.VILIBOR6m,
                 Margin = 1.85,
                 AgreementDuration = 24,
                 AgreementShortDescription = "Personal Loan Agreement"

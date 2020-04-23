@@ -39,6 +39,7 @@
                         <th>Base rate code</th>
                         <th>Margin</th>
                         <th>Agreement duration</th>
+                        <th>Current base rate</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +50,7 @@
                             <td>@item.BaseRateCode</td>
                             <td>@item.Margin</td>
                             <td>@item.AgreementDuration</td>
+                            <td>@await item.GetInterestRateValue()</td>
                         </tr>
                     }
                 </tbody>
