@@ -35,6 +35,8 @@ namespace RatesCalc.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+
             services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
             services.AddScoped<IRepository, EfRepository>();
 

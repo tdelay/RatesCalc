@@ -11,11 +11,10 @@ namespace RatesCalc.Web.Models
 {
     public class AgreementDTO
     {
-        public static readonly ICollection<BaseRateCodeEnum> AvailableCodeRates =
+        public ICollection<BaseRateCodeEnum> AvailableCodeRates =
             Enum.GetValues(typeof(BaseRateCodeEnum)).Cast<BaseRateCodeEnum>().ToList();
 
-        private BaseRateCodeEnum _BaseRateCode;
-
+        public int Id { get; set; }
         public long CustomerId { get; set; }
         [Required]
         public double Margin { get; set; }
@@ -25,29 +24,13 @@ namespace RatesCalc.Web.Models
         public double Amount { get; set; }
         public double CurrentRate { get; set; }
 
-   
         [Required]
-        public BaseRateCodeEnum BaseRateCode
-        {
-            get
-            {
-                return _BaseRateCode;
-            }
-            set
-            {
-                if (AvailableCodeRates.Contains(value))
-                {
-                    _BaseRateCode = value;
-                }
-                else
-                {
-                    throw (new ArgumentOutOfRangeException("BaseRateCode", value, string.Format("Base Rate code must be one of: {0}", string.Join(", ", AvailableCodeRates))));
-                }
-            }
-        }
+        public BaseRateCodeEnum BaseRateCode { get; set; }
+        public BaseRateCodeEnum NewBaseRateCode { get; set; }
 
         public static AgreementDTO FromAgreement(Agreement agreement) => new AgreementDTO
         {
+            Id = agreement.Id,
             CustomerId = agreement.CustomerId,
             BaseRateCode = agreement.BaseRateCode,
             Margin = agreement.Margin,
@@ -56,9 +39,9 @@ namespace RatesCalc.Web.Models
 
         };
 
-        public async Task<double> GetInterestRateValue()
+        public async Task<double> GetInterestRateValue(BaseRateCodeEnum baseRateCode)
         {
-            CurrentRate = await BaseRateValueApiFactory.Instance.GetRates(BaseRateCode.ToString());
+            CurrentRate = await BaseRateValueApiFactory.Instance.GetRates(baseRateCode.ToString());
             return CurrentRate + Margin;
         }
 

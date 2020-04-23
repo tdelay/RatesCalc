@@ -52,6 +52,24 @@ namespace RatesCalc.Web.Controllers
                            .Select(CustomerDTO.FromCustomer);
             return View(items);
 
+        }  
+
+        [HttpPost]
+        public async Task<CalculatedInterestDTO> CalculateInterestRate([FromBody] DataForCalculateRatesDTO obj)
+        {
+            var agreemenet = _repository.GetById<Agreement>(obj.AgreementId);
+
+            return new CalculatedInterestDTO
+            {
+                ExistingInteresRate = await BaseRateValueApiFactory.Instance.GetRates(agreemenet.BaseRateCode.ToString()),
+                CalculatedInteresRate = await BaseRateValueApiFactory.Instance.GetRates(obj.BaseRateCode),
+            };
+            //return PartialView("Partials/Customer/_CalculatedRates", new CalculatedInterestDTO
+            //{
+            //    ExistingInteresRate = await BaseRateValueApiFactory.Instance.GetRates(agreemenet.BaseRateCode.ToString()),
+            //    CalculatedInteresRate = await BaseRateValueApiFactory.Instance.GetRates(obj.BaseRateCode),
+            //});
+
         }
 
         /// <summary>
