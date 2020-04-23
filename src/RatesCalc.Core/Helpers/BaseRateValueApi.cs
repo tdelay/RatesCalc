@@ -13,12 +13,12 @@ namespace RatesCalc.Core.Helpers
     {
         private readonly HttpClient _httpClient;
         private Uri BaseEndpoint { get; set; } = new Uri("http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx/getLatestVilibRate?RateType=");
-        
+
         public BaseRateValueApi()
         {
             _httpClient = new HttpClient();
-        } 
-        
+        }
+
         public BaseRateValueApi(Uri baseEndpoint)
         {
             if (baseEndpoint == null)
@@ -32,22 +32,23 @@ namespace RatesCalc.Core.Helpers
                   .Add(new MediaTypeWithQualityHeaderValue("text/xml"));
         }
 
-        private async Task<T> GetAsync<T>(Uri requestUrl)
+        public async Task<string> GetAsync(Uri requestUrl)
         {
-            
             var response = await _httpClient.GetAsync(requestUrl, HttpCompletionOption.ResponseHeadersRead);
             response.EnsureSuccessStatusCode();
-            var data = await response.Content.ReadAsStringAsync();
-            var rate = ParseXmlData<T>(data);
-            return rate;
+            return await response.Content.ReadAsStringAsync();
         }
 
-        private T ParseXmlData<T>(string body)
+        public XmlElement ParseXmlData(string body)
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(body);
-            XmlElement root = doc.DocumentElement;
-            return (T)Convert.ChangeType(root.InnerText, typeof(T));
+            return doc.DocumentElement;
+        }
+
+        public T ParseDataByType<T>(XmlElement element)
+        {
+            return (T)Convert.ChangeType(element.InnerText, typeof(T));
         }
 
         private Uri CreateRequestUri(string queryString = "")
@@ -59,7 +60,9 @@ namespace RatesCalc.Core.Helpers
         public async Task<double> GetRates(string rateCode)
         {
             var requestUrl = CreateRequestUri(rateCode);
-            return await GetAsync<double>(requestUrl);
+            var responseBody = await GetAsync(requestUrl);
+            var xmlElement = ParseXmlData(responseBody);
+            return ParseDataByType<double>(xmlElement);
         }
 
     }
