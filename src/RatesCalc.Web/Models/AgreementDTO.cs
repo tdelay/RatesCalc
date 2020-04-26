@@ -38,12 +38,5 @@ namespace RatesCalc.Web.Models
             Amount = agreement.Amount
 
         };
-
-        public async Task<double> GetInterestRateValue(BaseRateCodeEnum baseRateCode)
-        {
-            CurrentRate = await BaseRateValueApiFactory.Instance.GetRates(baseRateCode.ToString());
-            return CurrentRate + Margin;
-        }
-
     }
 }

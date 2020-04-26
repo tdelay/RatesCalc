@@ -1,0 +1,41 @@
+﻿@model RatesCalc.Web.Models.AgreementDTO
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Amount</th>
+                <th>Base rate code</th>
+                <th>Margin</th>
+                <th>Agreement duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input asp-for="@Model.Id" type="radio" value="@Model.Id" name="AgreementRadioButton" />
+                </td>
+                <td>@Model.Amount</td>
+                <td>
+                    <select class="form-control" name="SelectedTags" data-agreement-id="@Model.Id">
+                        @{
+                            foreach (var code in @Model.AvailableCodeRates)
+                            {
+                                <option value="@code" selected="@(code.Equals(@Model.BaseRateCode) ? "selected" : null)">
+                                    @code
+                                </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>@Model.Margin</td>
+                <td>@Model.AgreementDuration</td>
+            </tr>
+
+        </tbody>
+    </table>
+    @Html.AntiForgeryToken()
+    <input type="button" value="Calculate Rates" class="btn btn-primary" onclick="calculateInterestRate();" />
+    <div id="calculated-results" class="pt-3"></div>
+</div>
