@@ -26,6 +26,10 @@ namespace RatesCalc.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Customer>()
+               .HasMany(c => c.Agreements)
+               .WithOne(e => e.Customer);
+
             base.OnModelCreating(modelBuilder);
 
         }

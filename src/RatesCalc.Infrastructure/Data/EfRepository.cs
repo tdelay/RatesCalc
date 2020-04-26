@@ -12,7 +12,7 @@ namespace RatesCalc.Infrastructure.Data
     public class EfRepository : IRepository
     {
 
-        private readonly AppDbContext _dbContext;
+        public readonly AppDbContext _dbContext;
 
         public EfRepository(AppDbContext dbContext)
         {

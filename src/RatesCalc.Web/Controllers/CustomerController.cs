@@ -22,7 +22,7 @@ namespace RatesCalc.Web.Controllers
         {
             _logger = logger;
             _repository = repository;
-            this.SeedData();
+            SeedData();
         }
 
         /// <summary>
@@ -64,12 +64,6 @@ namespace RatesCalc.Web.Controllers
                 ExistingInteresRate = await BaseRateValueApiFactory.Instance.GetRates(agreemenet.BaseRateCode.ToString()),
                 CalculatedInteresRate = await BaseRateValueApiFactory.Instance.GetRates(obj.BaseRateCode),
             };
-            //return PartialView("Partials/Customer/_CalculatedRates", new CalculatedInterestDTO
-            //{
-            //    ExistingInteresRate = await BaseRateValueApiFactory.Instance.GetRates(agreemenet.BaseRateCode.ToString()),
-            //    CalculatedInteresRate = await BaseRateValueApiFactory.Instance.GetRates(obj.BaseRateCode),
-            //});
-
         }
 
         /// <summary>

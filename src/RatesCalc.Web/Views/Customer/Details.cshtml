@@ -15,10 +15,11 @@
     </div>
     <div class="col-md-9">
         <h4>Agreements</h4>
-        @foreach (var item in Model.Agreements)
-        {
-            @await Html.PartialAsync("Partials/Customer/_CustomerAgreements", item)
-        }
+        @await Html.PartialAsync("Partials/Customer/_CustomerAgreements", Model.Agreements)
+
+        @Html.AntiForgeryToken()
+        <input type="button" value="Calculate Rates" class="btn btn-primary" onclick="calculateInterestRate();" />
+        <div id="calculated-results" class="pt-3"></div>
     </div>
 </div>
 

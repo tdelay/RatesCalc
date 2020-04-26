@@ -13,6 +13,7 @@ namespace RatesCalc.Core.Data
         [StringLength(50)]
         public string Name { get; set; }
         public bool HasAgreement { get; set; } = false;
+        public ICollection<Agreement> Agreements { get; set; }
 
         public void SignAgreement()
         {

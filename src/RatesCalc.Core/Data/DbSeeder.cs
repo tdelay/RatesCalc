@@ -17,14 +17,14 @@ namespace RatesCalc.Core.Data
             {
                 PersonalId = 12345678,
                 Name = "Goranas Truksevičius",
-                HasAgreement = true
+                HasAgreement = true,
             });
 
             repository.Add(new Customer
             {
                 PersonalId = 78706196287,
                 Name = "Dange Kulčiutė",
-                HasAgreement = true
+                HasAgreement = true,
             });
 
             repository.Add(new Agreement

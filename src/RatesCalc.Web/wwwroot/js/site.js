@@ -4,12 +4,11 @@
 // Write your JavaScript code.
 
 function calculateInterestRate() {
-
-    var AgreementId = $('input[name="AgreementRadioButton"]:checked').val();
-    var BaseRateCode = $(`[data-agreement-id="${AgreementId}"]`).val();
-    var objData = { AgreementId: parseInt(AgreementId, 10), BaseRateCode: BaseRateCode };
-    console.log(AgreementId);
-    console.log(BaseRateCode);
+    var agreementId = $('input[name="AgreementRadioButton"]:checked').val();
+    var baseRateCode = $(`[data-agreement-id="${agreementId}"]`).val();
+    var objData = { AgreementId: parseInt(agreementId, 10), BaseRateCode: baseRateCode };
+    console.log(agreementId);
+    console.log(baseRateCode);
     $.ajax({
         type: "POST",
         url: '/Customer/CalculateInterestRate',

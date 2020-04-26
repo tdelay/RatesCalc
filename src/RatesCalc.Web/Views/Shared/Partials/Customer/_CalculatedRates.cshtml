@@ -2,7 +2,7 @@
 
 @if (Model.CalculatedInteresRate > 0)
 {
-    <h6>Existing interest rate is: @Model.ExistingInteresRate</h6>
-    <h6>Calculated interest rate is: @Model.CalculatedInteresRate</h6>
+    <h6>Existing interest rate: @Model.ExistingInteresRate</h6>
+    <h6>Calculated interest rate: @Model.CalculatedInteresRate</h6>
     <h6>Difference: @(Model.CalculatedInteresRate - Model.ExistingInteresRate)</h6>
 }
