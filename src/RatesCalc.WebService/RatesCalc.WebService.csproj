@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RatesCalc.Core\RatesCalc.Core.csproj" />
+    <ProjectReference Include="..\RatesCalc.Infrastructure\RatesCalc.Infrastructure.csproj" />
+    <ProjectReference Include="..\RatesCalc.SharedBase\RatesCalc.SharedBase.csproj" />
+  </ItemGroup>
+
+
+</Project>
