@@ -12,7 +12,7 @@ namespace RatesCalc.Core.Helpers
     public class BaseRateValueApi
     {
         private readonly HttpClient _httpClient;
-        private Uri BaseEndpoint { get; set; } = new Uri("http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx/getLatestVilibRate?RateType=");
+        private Uri _baseEndpoint { get; set; } = new Uri("http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx/getLatestVilibRate?RateType=");
 
         public BaseRateValueApi()
         {
@@ -25,7 +25,7 @@ namespace RatesCalc.Core.Helpers
             {
                 throw new ArgumentNullException("baseEndpoint");
             }
-            BaseEndpoint = baseEndpoint;
+            _baseEndpoint = baseEndpoint;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders
                   .Accept
@@ -63,7 +63,7 @@ namespace RatesCalc.Core.Helpers
 
         private Uri CreateRequestUri(string queryString = "")
         {
-            var uri = new Uri(string.Format(BaseEndpoint + queryString));
+            var uri = new Uri(string.Format(_baseEndpoint + queryString));
             return uri;
         }
 

@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RatesCalc.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RatesCalc.Infrastructure
 {

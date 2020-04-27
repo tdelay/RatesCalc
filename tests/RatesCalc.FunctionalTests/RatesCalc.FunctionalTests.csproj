@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\RatesCalc.Core\RatesCalc.Core.csproj" />
+    <ProjectReference Include="..\..\src\RatesCalc.WebService\RatesCalc.WebService.csproj" />
     <ProjectReference Include="..\..\src\RatesCalc.Web\RatesCalc.Web.csproj" />
   </ItemGroup>
 
