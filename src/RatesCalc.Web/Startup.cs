@@ -12,7 +12,6 @@ using Microsoft.Extensions.Hosting;
 using RatesCalc.Core.Data;
 using RatesCalc.Infrastructure;
 using RatesCalc.Infrastructure.Data;
-using RatesCalc.Infrastructure.DomainEvents;
 using RatesCalc.SharedBase.Interfaces;
 
 namespace RatesCalc.Web
@@ -37,7 +36,6 @@ namespace RatesCalc.Web
 
             services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
 
-            services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
             services.AddScoped<IRepository, EfRepository>();
 
             services.AddDbContext();

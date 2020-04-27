@@ -13,7 +13,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RatesCalc.Infrastructure;
 using RatesCalc.Infrastructure.Data;
-using RatesCalc.Infrastructure.DomainEvents;
 using RatesCalc.SharedBase.Interfaces;
 
 namespace RatesCalc.WebService
@@ -35,7 +34,6 @@ namespace RatesCalc.WebService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
 
-            services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
             services.AddScoped<IRepository, EfRepository>();
             services.AddDbContext();
             services.AddControllers();
