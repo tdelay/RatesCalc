@@ -22,7 +22,7 @@ namespace RatesCalc.Web.Controllers
         {
             _logger = logger;
             _repository = repository;
-            SeedData();
+          
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace RatesCalc.Web.Controllers
         /// <returns>List of Customers</returns>
         public IActionResult Index()
         {
-            
+            SeedData();
             var items = _repository.List<Customer>()
                            .Select(CustomerDTO.FromCustomer);
             return View(items);
@@ -79,7 +79,7 @@ namespace RatesCalc.Web.Controllers
                 _logger.LogInformation("Trying to get Customers instance with Agreements list");
                 customer = CustomerDTO.FromCustomer(_repository.GetById<Customer>(id));
                 customer.Agreements = _repository.List<Agreement>()
-                                        .Where(a => a.CustomerId == customer.PersonalId)
+                                        .Where(a => a.CustomerId == customer.CustomerId)
                                         .Select(AgreementDTO.FromAgreement)
                                         .ToList();
 

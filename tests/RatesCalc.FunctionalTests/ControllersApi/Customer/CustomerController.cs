@@ -37,7 +37,7 @@ namespace RatesCalc.FunctionalTests.ControllersApi.Customer
             var stringResponse = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<IEnumerable<RatesCalc.Core.Data.Customer>>(stringResponse).ToList();
 
-            Assert.Equal(2, result.Count());
+            Assert.NotEmpty(result);
         }
 
         [Theory]

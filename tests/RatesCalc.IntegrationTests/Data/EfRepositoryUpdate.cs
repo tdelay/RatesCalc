@@ -42,7 +42,7 @@ namespace RatesCalc.IntegrationTests.Data
 
             Assert.NotNull(updatedItem);
             Assert.NotEqual(item.Name, updatedItem.Name);
-            Assert.Equal(newItem.Id, updatedItem.Id);
+            Assert.Equal(newItem.CustomerId, updatedItem.CustomerId);
         }
 
     }

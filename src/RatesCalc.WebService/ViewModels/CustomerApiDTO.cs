@@ -8,14 +8,14 @@ namespace RatesCalc.WebService.ViewModels
 {
     public class CustomerApiDTO
     {
-        public int Id { get; set; }
+        public int CustomerId { get; set; }
         public long PersonalId { get; set; }
         public string Name { get; set; }
         public ICollection<AgreementApiDTO> Agreements { get; set; }
         // TODO: use AutoMappper 
         public static CustomerApiDTO FromCustomer(Customer customer) => new CustomerApiDTO
         {
-            Id = customer.Id,
+            CustomerId = customer.CustomerId,
             PersonalId = customer.PersonalId,
             Name = customer.Name,
         };

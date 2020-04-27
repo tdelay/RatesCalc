@@ -17,4 +17,8 @@
     <Folder Include="Core\Entities\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\RatesCalc.Core\RatesCalc.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,15 +1,11 @@
 ﻿using RatesCalc.Core.Enums;
 using RatesCalc.SharedBase.Entities;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace RatesCalc.Core.Data
 {
     public class Agreement : BaseEntity
     {
-        
-
+        public int AgreementId { get; set; }
         public long CustomerId { get; set; }
         public double Amount { get; set; }
         public double Margin { get; set; }

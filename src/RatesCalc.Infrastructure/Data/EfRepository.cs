@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RatesCalc.Core.Data;
+using RatesCalc.Core.Enums;
 using RatesCalc.SharedBase.Entities;
 using RatesCalc.SharedBase.Interfaces;
 using System;
@@ -53,5 +55,7 @@ namespace RatesCalc.Infrastructure.Data
             _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();
         }
+
     }
+    
 }

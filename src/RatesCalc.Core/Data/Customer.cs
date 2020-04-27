@@ -8,6 +8,7 @@ namespace RatesCalc.Core.Data
 {
     public class Customer : BaseEntity
     {
+        public int CustomerId { get; set; }
         public long PersonalId { get; set; }
         [StringLength(50)]
         public string Name { get; set; }

@@ -16,11 +16,11 @@
             {
                 <tr>
                     <td>
-                        <input asp-for="@item.Id" type="radio" value="@item.Id" name="AgreementRadioButton" />
+                        <input asp-for="@item.AgreementId" type="radio" value="@item.AgreementId" name="AgreementRadioButton" />
                     </td>
                     <td>@item.Amount</td>
                     <td>
-                        <select class="form-control" name="SelectedTags" data-agreement-id="@item.Id">
+                        <select class="form-control" name="SelectedTags" data-agreement-id="@item.AgreementId">
                             @foreach (var code in @item.AvailableCodeRates)
                             {
                                 <option value="@code" selected="@(code.Equals(item.BaseRateCode) ? "selected" : null)">

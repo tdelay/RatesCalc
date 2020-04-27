@@ -49,6 +49,7 @@ namespace RatesCalc.WebAPI.Controllers
         [HttpGet]
         public IEnumerable<CustomerApiDTO> Get()
         {
+        
             var customers = _repository.List<Customer>().Select(CustomerApiDTO.FromCustomer).ToList();
             customers.ForEach(c => c.Agreements = _repository.List<Agreement>()
                                                     .Where(a => a.CustomerId == c.PersonalId)
@@ -62,7 +63,11 @@ namespace RatesCalc.WebAPI.Controllers
         [HttpPost]
         public async Task<CalculatedInterestApiDTO> CalculateInterestRate([FromBody] DataForCalculateRatesApiDTO obj)
         {
+
+            var agg = _repository.List<Agreement>();
             var agreemenet = _repository.GetById<Agreement>(obj.AgreementId);
+            if (agreemenet == null)
+                throw new MissingMemberException("No agreements by given data were found.");
 
             var existingInteresRate = await BaseRateValueApiFactory.Instance.GetRates(agreemenet.BaseRateCode.ToString());
             var calculatedInteresRate = await BaseRateValueApiFactory.Instance.GetRates(obj.BaseRateCode);

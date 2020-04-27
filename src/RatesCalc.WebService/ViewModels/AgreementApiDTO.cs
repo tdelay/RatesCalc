@@ -9,7 +9,7 @@ namespace RatesCalc.WebService.ViewModels
 {
     public class AgreementApiDTO
     {
-        public int Id { get; set; }
+        public int AgreementId { get; set; }
         public long CustomerId { get; set; }
         public double Margin { get; set; }
         public int AgreementDuration { get; set; }
@@ -20,7 +20,7 @@ namespace RatesCalc.WebService.ViewModels
 
         public static AgreementApiDTO FromAgreement(Agreement agreement) => new AgreementApiDTO
         {
-            Id = agreement.Id,
+            AgreementId = agreement.AgreementId,
             CustomerId = agreement.CustomerId,
             BaseRateCode = agreement.BaseRateCode,
             Margin = agreement.Margin,

@@ -14,7 +14,7 @@ namespace RatesCalc.Web.Models
         public ICollection<BaseRateCodeEnum> AvailableCodeRates =
             Enum.GetValues(typeof(BaseRateCodeEnum)).Cast<BaseRateCodeEnum>().ToList();
 
-        public int Id { get; set; }
+        public int AgreementId { get; set; }
         public long CustomerId { get; set; }
         [Required]
         public double Margin { get; set; }
@@ -30,7 +30,7 @@ namespace RatesCalc.Web.Models
 
         public static AgreementDTO FromAgreement(Agreement agreement) => new AgreementDTO
         {
-            Id = agreement.Id,
+            AgreementId = agreement.AgreementId,
             CustomerId = agreement.CustomerId,
             BaseRateCode = agreement.BaseRateCode,
             Margin = agreement.Margin,

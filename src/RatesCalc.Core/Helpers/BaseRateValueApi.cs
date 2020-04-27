@@ -61,7 +61,7 @@ namespace RatesCalc.Core.Helpers
             return (T)Convert.ChangeType(element.InnerXml, typeof(T));
         }
 
-        private Uri CreateRequestUri(string queryString = "")
+        public Uri CreateRequestUri(string queryString = "")
         {
             var uri = new Uri(string.Format(_baseEndpoint + queryString));
             return uri;

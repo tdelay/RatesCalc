@@ -8,14 +8,14 @@ namespace RatesCalc.Web.Models
 {
     public class CustomerDTO
     {
-        public int Id { get; set; }
+        public int CustomerId { get; set; }
         public long PersonalId { get; set; }
         public string Name { get; set; }
         public ICollection<AgreementDTO> Agreements { get; set; }
         // TODO: use AutoMappper 
         public static CustomerDTO FromCustomer(Customer customer) => new CustomerDTO
         {
-            Id = customer.Id,
+            CustomerId = customer.CustomerId,
             PersonalId = customer.PersonalId,
             Name = customer.Name,
         };

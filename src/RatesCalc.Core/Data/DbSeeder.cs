@@ -11,10 +11,12 @@ namespace RatesCalc.Core.Data
     {
         public static void SeedDBCustomers(IRepository repository)
         {
-            if (repository.List<Customer>().Count() >= 2) return;
+            var customers = repository.List<Customer>().ToList();
+            if (customers.Count() >= 2) return;
 
             repository.Add(new Customer
             {
+                CustomerId = 1,
                 PersonalId = 12345678,
                 Name = "Goranas Truksevičius",
                 HasAgreement = true,
@@ -22,6 +24,7 @@ namespace RatesCalc.Core.Data
 
             repository.Add(new Customer
             {
+                CustomerId = 2,
                 PersonalId = 78706196287,
                 Name = "Dange Kulčiutė",
                 HasAgreement = true,
@@ -29,7 +32,8 @@ namespace RatesCalc.Core.Data
 
             repository.Add(new Agreement
             {
-                CustomerId = 12345678,
+                CustomerId = 1,
+                AgreementId = 1,
                 Amount = 12000,
                 BaseRateCode = BaseRateCodeEnum.VILIBOR3m,
                 Margin = 1.6,
@@ -39,8 +43,9 @@ namespace RatesCalc.Core.Data
 
             repository.Add(new Agreement
             {
-                CustomerId = 78706196287,
+                CustomerId = 2,
                 Amount = 8000,
+                AgreementId = 2,
                 BaseRateCode = BaseRateCodeEnum.VILIBOR1y,
                 Margin = 2.2,
                 AgreementDuration = 36,
@@ -49,7 +54,8 @@ namespace RatesCalc.Core.Data
 
             repository.Add(new Agreement
             {
-                CustomerId = 78706196287,
+                CustomerId = 2,
+                AgreementId = 3,
                 Amount = 1000,
                 BaseRateCode = BaseRateCodeEnum.VILIBOR6m,
                 Margin = 1.85,

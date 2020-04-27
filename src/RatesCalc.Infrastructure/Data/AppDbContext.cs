@@ -1,13 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RatesCalc.SharedBase.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using RatesCalc.Core.Data;
-using RatesCalc.SharedBase.Interfaces;
 
 namespace RatesCalc.Infrastructure.Data
 {
@@ -24,12 +17,7 @@ namespace RatesCalc.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>()
-               .HasMany(c => c.Agreements)
-               .WithOne(e => e.Customer);
-
             base.OnModelCreating(modelBuilder);
-
         }
 
         public async Task<int> SaveChangesAsync()
