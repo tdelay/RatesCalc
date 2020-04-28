@@ -52,7 +52,7 @@ namespace RatesCalc.WebAPI.Controllers
         
             var customers = _repository.List<Customer>().Select(CustomerApiDTO.FromCustomer).ToList();
             customers.ForEach(c => c.Agreements = _repository.List<Agreement>()
-                                                    .Where(a => a.CustomerId == c.PersonalId)
+                                                    .Where(a => a.CustomerId == c.CustomerId)
                                                     .Select(AgreementApiDTO.FromAgreement).ToList());
             return customers;
 
